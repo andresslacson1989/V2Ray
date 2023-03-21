@@ -32,14 +32,18 @@ echo "IP=" >> /var/lib/akbarstorevpn/ipvps.conf
 cd
 #
 # Add Domain
+curl -sb -X POST $DOMAIN/api/server/install -H "Content-Type: application/x-www-form-urlencoded" -d "status=Domain&ip=$MYIP"
 wget https://raw.githubusercontent.com/andresslacson1989/V2Ray/main/updated/adddomain.sh && chmod +x adddomain.sh && ./adddomain.sh
 #
 #install tools/alat
+curl -sb -X POST $DOMAIN/api/server/install -H "Content-Type: application/x-www-form-urlencoded" -d "status=Tools&ip=$MYIP"
 wget https://raw.githubusercontent.com/andresslacson1989/V2Ray/main/install-tools.sh && chmod +x install-tools.sh && ./install-tools.sh
 #
 #Instal Xray
+curl -sb -X POST $DOMAIN/api/server/install -H "Content-Type: application/x-www-form-urlencoded" -d "status=V2Ray&ip=$MYIP"
 wget https://raw.githubusercontent.com/andresslacson1989/V2Ray/main/install-xray.sh && chmod +x install-xray.sh && ./install-xray.sh
 #install xmenu
+curl -sb -X POST $DOMAIN/api/server/install -H "Content-Type: application/x-www-form-urlencoded" -d "status=Finalizing&ip=$MYIP"
 wget https://raw.githubusercontent.com/andresslacson1989/V2Ray/main/menu/updatedll.sh && chmod +x updatedll.sh && ./updatedll.sh
 #
 #install config for default user
@@ -105,7 +109,9 @@ else
 	echo "   - Full Orders For Various Services" | tee -a log-install.txt
 	echo "   - White Label" | tee -a log-install.txt
 	echo "   - Installation Log --> /root/log-install.txt"  | tee -a log-install.txt
+ curl -sb -X POST $DOMAIN/api/server/install -H "Content-Type: application/x-www-form-urlencoded" -d "status=Rebooting&ip=$MYIP"
 	echo " Reboot 15 Sec"
+ curl -sb -X POST $DOMAIN/api/server/install -H "Content-Type: application/x-www-form-urlencoded" -d "status=done&ip=$MYIP"
 	sleep 15
 	cd
 	rm -rf updatedll
