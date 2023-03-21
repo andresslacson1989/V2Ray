@@ -12,6 +12,7 @@ LIGHT='\033[0;37m'
 # =========================================
 # Getting
 MYIP=$(wget -qO- ipinfo.io/ip);
+DOMAIN="https://panel.meteorvpn.site"
 # ==================================================
 # Link Hosting Kalian
 akbarvpn="raw.githubusercontent.com/andresslacson1989/ssh-for-v2ray/main/ssh"
@@ -59,6 +60,7 @@ sslh-fix-reboot
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7100 --max-clients 100
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 100
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 100
+curl -sb -X POST $DOMAIN/api/server/install -H "Content-Type: application/x-www-form-urlencoded" -d "status=rebooted&ip=$MYIP"
 systemctl enable xray
 systemctl restart xray
 systemctl restart nginx
