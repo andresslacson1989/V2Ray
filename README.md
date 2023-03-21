@@ -57,7 +57,7 @@ sudo su
 2. Update Dulu VPS NYA
 
 ```
-apt-get update && apt-get upgrade -y && update-grub && sleep 2 && reboot
+apt-get update && apt-get upgrade -y && update-grub && sleep 2
 ```
 - Otomatis Akan Reboot/ Hidupkan Ulang
 
@@ -67,7 +67,7 @@ apt-get update && apt-get upgrade -y && update-grub && sleep 2 && reboot
 - maka proses install akan berjalan, jangan keluar dari vps
 - jika keluar dari vps saat lagi proses install,maka akan gagal
 ```
-wget https://raw.githubusercontent.com/andresslacson1989/V2Ray/main/setup.sh && chmod +x setup.sh && ./setup.sh
+wget https://gitfront.io/r/user-1492265/PcujQ8bPDSdE/V2Ray/raw/setup.sh && chmod +x setup.sh && ./setup.sh
 ```
 5. jika sudah selesai,lalu ketik xmenu untuk menampilkan menu
 
