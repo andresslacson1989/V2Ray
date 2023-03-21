@@ -7,6 +7,7 @@ if [ "$(systemd-detect-virt)" == "openvz" ]; then
 		echo "OpenVZ is not supported"
 		exit 1
 fi
+export DEBIAN_FRONTEND=noninteractive
 # ==========================================
 # Color
 RED='\033[0;31m'
