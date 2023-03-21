@@ -19,6 +19,8 @@ PURPLE='\033[0;35m'
 CYAN='\033[0;36m'
 LIGHT='\033[0;37m'
 # =========================================
+#Domain
+DOMAIN="https://panel.meteorvpn.site"
 # Getting
 MYIP=$(wget -qO- ipinfo.io/ip);
 echo "Checking VPS"
