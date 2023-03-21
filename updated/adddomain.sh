@@ -36,7 +36,7 @@ clear
 echo -e "========================="
 read -rp "Input Domain/Host : " -e domain1
 echo -e "========================="
-echo -e "Domain di tambahkan: ${BLUE}${domain1} ${NC}Please Wait..."
+echo -e "Domain Added: ${BLUE}${domain1} ${NC}Please Wait..."
 echo -e "========================="
 sleep 3
 
