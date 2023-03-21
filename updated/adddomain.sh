@@ -30,8 +30,8 @@ source /var/lib/akbarstorevpn/ipvps.conf
 DOM="https://panel.meteorvpn.site"
 domain1=$(curl -sb -X POST $DOM/api/servers/v2ray -H "Content-Type: application/x-www-form-urlencoded" -d "ip=$MYIP")
 clear
-echo -e "========================="
-read -rp "Input Domain/Host : " -e domain1
+#echo -e "========================="
+#read -rp "Input Domain/Host : " -e domain1
 echo -e "========================="
 echo -e "Domain Added: ${BLUE}${domain1} ${NC}Please Wait..."
 echo -e "========================="
