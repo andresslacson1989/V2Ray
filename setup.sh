@@ -42,6 +42,8 @@ wget https://raw.githubusercontent.com/andresslacson1989/V2Ray/main/install-xray
 #install xmenu
 wget https://raw.githubusercontent.com/andresslacson1989/V2Ray/main/menu/updatedll.sh && chmod +x updatedll.sh && ./updatedll.sh
 #
+#install config for default user
+wget -P /etc/v2ray/ https://raw.githubusercontent.com/andresslacson1989/V2Ray/main/files/config.json
 #SELESAI
 # collor status
 error1="${RED} [ERROR] ${NC}"
