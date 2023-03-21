@@ -27,7 +27,7 @@ error1="${RED} [ERROR] ${NC}"
 success="${GREEN} [OK] ${NC}"
 #Domain lama
 source /var/lib/akbarstorevpn/ipvps.conf
-DOM="https://panel.meteorvpn.site"
+DOM=$DOMAIN
 domain1=$(curl -sb -X POST $DOM/api/servers/v2ray -H "Content-Type: application/x-www-form-urlencoded" -d "ip=$MYIP")
 clear
 #echo -e "========================="
