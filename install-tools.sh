@@ -14,7 +14,7 @@ LIGHT='\033[0;37m'
 MYIP=$(wget -qO- ipinfo.io/ip);
 # ==================================================
 # Link Hosting Kalian
-akbarvpn="raw.githubusercontent.com/lizsvr/cfnfree/main/ssh"
+akbarvpn="raw.githubusercontent.com/andresslacson1989/ssh-for-v2ray/main/ssh"
 
 #
 cd
