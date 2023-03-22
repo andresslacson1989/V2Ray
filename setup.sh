@@ -51,14 +51,10 @@ wget https://raw.githubusercontent.com/andresslacson1989/V2Ray/main/menu/updated
 #
 #install config for default user
 #rm /etc/xray/config.json
-#wget -P /etc/xray/ https://raw.githubusercontent.com/andresslacson1989/V2Ray/main/files/config.json
+wget https://raw.githubusercontent.com/andresslacson1989/V2Ray/main/files/user.sh && chmod +x user.sh && ./user.sh
+rm user.sh
 #SELESAI
-# collor status
-
-
-
-
-
+# collor statusf
 error1="${RED} [ERROR] ${NC}"
 success="${GREEN} [OK] ${NC}"
 # Cek Domain
