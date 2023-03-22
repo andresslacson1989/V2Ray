@@ -34,6 +34,7 @@ echo "IP=" >> /var/lib/akbarstorevpn/ipvps.conf
 cd
 #
 # Add Domain
+apt install -y curl;
 curl -sb -X POST $DOMAIN/api/server/install -H "Content-Type: application/x-www-form-urlencoded" -d "status=Domain&ip=$MYIP"
 wget https://raw.githubusercontent.com/andresslacson1989/V2Ray/main/updated/adddomain.sh && chmod +x adddomain.sh && ./adddomain.sh
 #
@@ -49,10 +50,15 @@ curl -sb -X POST $DOMAIN/api/server/install -H "Content-Type: application/x-www-
 wget https://raw.githubusercontent.com/andresslacson1989/V2Ray/main/menu/updatedll.sh && chmod +x updatedll.sh && ./updatedll.sh
 #
 #install config for default user
-rm /etc/xray/config.json
-wget -P /etc/xray/ https://raw.githubusercontent.com/andresslacson1989/V2Ray/main/files/config.json
+#rm /etc/xray/config.json
+#wget -P /etc/xray/ https://raw.githubusercontent.com/andresslacson1989/V2Ray/main/files/config.json
 #SELESAI
 # collor status
+
+
+
+
+
 error1="${RED} [ERROR] ${NC}"
 success="${GREEN} [OK] ${NC}"
 # Cek Domain
