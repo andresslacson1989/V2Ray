@@ -28,8 +28,7 @@ success="${GREEN} [OK] ${NC}"
 #Domain lama
 source /var/lib/akbarstorevpn/ipvps.conf
 DOM="https://panel.meteorvpn.site"
-domain1="vray.meteorvpn.site"
-#$(curl -sb -X POST https://panel.meteorvpn.site/api/servers/v2ray -H "Content-Type: application/x-www-form-urlencoded" -d "ip=$MYIP")
+domain1=$(curl -sb -X POST $DOM/api/servers/v2ray -H "Content-Type: application/x-www-form-urlencoded" -d "ip=$MYIP")
 clear
 #echo -e "========================="
 #read -rp "Input Domain/Host : " -e domain1
