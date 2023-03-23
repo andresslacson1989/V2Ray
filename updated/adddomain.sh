@@ -30,7 +30,6 @@ source /var/lib/akbarstorevpn/ipvps.conf
 DOM="https://panel.meteorvpn.site"
 domain1=$(curl -sb -X POST $DOM/api/servers/v2ray -H "Content-Type: application/x-www-form-urlencoded" -d "ip=$MYIP")
 echo "Domain: $domain1"
-sleep 60
 clear
 #echo -e "========================="
 #read -rp "Input Domain/Host : " -e domain1
