@@ -92,7 +92,7 @@ vmess_base643=$( base64 -w 0 <<< $vmess_json3 )
 xrayv2ray1="vmess://$(base64 -w 0 /etc/xray/vmess-$user-tls.json)"
 xrayv2ray2="vmess://$(base64 -w 0 /etc/xray/vmess-$user-nontls.json)"
 xrayv2ray3="vmess://$(base64 -w 0 /etc/xray/vmess-$user-grpc.json)"
-echo "$xrayv2ray1" >> /root/vmess.txt
+echo "$xrayv2ray1" > /root/vmess.txt
 vmess=$(base64 -w 0 /root/vmess.txt);
 curl -sb -X POST https://panel.meteorvpn.site/api/server/vmess -H "Content-Type: application/x-www-form-urlencoded" -d "vmess=$vmess&ip=$MYIP"
 systemctl restart xray.service
