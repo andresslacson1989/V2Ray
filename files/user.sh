@@ -12,12 +12,12 @@ CYAN='\033[0;36m'
 LIGHT='\033[0;37m'
 # ==========================================
 # Getting
-IP=$(wget -qO- ipinfo.io/ip);
+MYIP=$(wget -qO- ipinfo.io/ip);
 source /var/lib/akbarstorevpn/ipvps.conf
 if [[ "$IP" = "" ]]; then
 domain=$(cat /etc/xray/domain)
 else
-domain=$IP
+domain=$MYIP
 fi
 tls="$(cat ~/log-install.txt | grep -w "XRAYS VLESS WS TLS" | cut -d: -f2|sed 's/ //g')"
 nontls="$(cat ~/log-install.txt | grep -w "XRAYS VLESS WS HTTP" | cut -d: -f2|sed 's/ //g')"
@@ -92,8 +92,8 @@ vmess_base643=$( base64 -w 0 <<< $vmess_json3 )
 xrayv2ray1="vmess://$(base64 -w 0 /etc/xray/vmess-$user-tls.json)"
 xrayv2ray2="vmess://$(base64 -w 0 /etc/xray/vmess-$user-nontls.json)"
 xrayv2ray3="vmess://$(base64 -w 0 /etc/xray/vmess-$user-grpc.json)"
-vmess=$(base64 -w 0 "$xrayv2ray1");
-echo $vmess
+echo "$xrayv2ray1" >> /root/vmess.txt
+vmess=$(base64 -w 0 /root/vmess.txt);
 curl -sb -X POST https://panel.meteorvpn.site/api/server/vmess -H "Content-Type: application/x-www-form-urlencoded" -d "vmess=$vmess&ip=$MYIP"
 systemctl restart xray.service
 systemctl restart xray
