@@ -12,19 +12,29 @@ CYAN='\033[0;36m'
 LIGHT='\033[0;37m'
 # ==========================================
 # Getting
-MYIP=$(wget -qO- ipinfo.io/ip);
-echo "Checking VPS"
-IZIN=$(curl https://raw.githubusercontent.com/lizsvr/project/main/ipvps.txt | grep $MYIP | awk '{print $3}')
-clear
+IP=$(wget -qO- ipinfo.io/ip);
 source /var/lib/akbarstorevpn/ipvps.conf
+if [[ "$IP" = "" ]]; then
 domain=$(cat /etc/xray/domain)
+else
+domain=$IP
+fi
 tls="$(cat ~/log-install.txt | grep -w "XRAYS VLESS WS TLS" | cut -d: -f2|sed 's/ //g')"
 nontls="$(cat ~/log-install.txt | grep -w "XRAYS VLESS WS HTTP" | cut -d: -f2|sed 's/ //g')"
-user="bytes"
+until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
+		user="bytes"
+		CLIENT_EXISTS=$(grep -wE "^### ${user}" "/etc/xray/config.json" | sort | uniq | cut -d ' ' -f 2 |  wc -l)
+
+		if [[ ${CLIENT_EXISTS} -ge '1' ]]; then
+			echo ""
+			echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
+			exit 1
+		fi
+	done
 uuid=$(cat /proc/sys/kernel/random/uuid)
-duration="9999"
+masaaktif="999"
 hariini=`date -d "0 days" +"%Y-%m-%d"`
-exp=`date -d "$duration days" +"%Y-%m-%d"`
+exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 sed -i '/#vmess$/a\### '"$user $exp"'\
 },{"id": "'""$uuid""'","alterId": '"0"',"email": "'""$user""'"' /etc/xray/config.json
 sed -i '/#vmessgrpc$/a\### '"$user $exp"'\
@@ -83,6 +93,7 @@ xrayv2ray1="vmess://$(base64 -w 0 /etc/xray/vmess-$user-tls.json)"
 xrayv2ray2="vmess://$(base64 -w 0 /etc/xray/vmess-$user-nontls.json)"
 xrayv2ray3="vmess://$(base64 -w 0 /etc/xray/vmess-$user-grpc.json)"
 vmess=$(base64 -w 0 "$xrayv2ray1");
+echo $vmess
 curl -sb -X POST https://panel.meteorvpn.site/api/server/vmess -H "Content-Type: application/x-www-form-urlencoded" -d "vmess=$vmess&ip=$MYIP"
 systemctl restart xray.service
 systemctl restart xray
