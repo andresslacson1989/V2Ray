@@ -15,7 +15,7 @@ LIGHT='\033[0;37m'
 MYIP=$(wget -qO- ipinfo.io/ip);
 source /var/lib/akbarstorevpn/ipvps.conf
 domain=$(cat /etc/xray/domain)
-tls="$(cat /root/log-install.txt | grep -w "XRAYS VLESS WS TLS" | cut -d: -f2|sed 's/ //g')"
+tls="443"
 nontls="$(cat /root/log-install.txt | grep -w "XRAYS VLESS WS HTTP" | cut -d: -f2|sed 's/ //g')"
 until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 		user="bytes"
@@ -40,7 +40,7 @@ cat>/etc/xray/vmess-$user-tls.json<<EOF
       "v": "2",
       "ps": "${user}",
       "add": "${domain}",
-      "port": "${tls}",
+      "port": "$tls",
       "id": "${uuid}",
       "aid": "0",
       "net": "ws",
@@ -70,7 +70,7 @@ cat>/etc/xray/vmess-$user-grpc.json<<EOF
       "v": "2",
       "ps": "${user}",
       "add": "${domain}",
-      "port": "${tls}",
+      "port": "$tls",
       "id": "${uuid}",
       "aid": "0",
       "net": "grpc",
